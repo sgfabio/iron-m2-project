@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 // User model
 const User = require("../models/user");
-const Course = require("../models/course");
+const Place = require("../models/place");
 // BCrypt to encrypt passwords
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
