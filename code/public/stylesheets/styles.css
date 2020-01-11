@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-nav a{ 
+  font-size: 22px;
+}
+
+#navbarNav {
+  margin-left: 75%;
+  
+}
