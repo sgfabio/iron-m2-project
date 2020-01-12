@@ -68,5 +68,44 @@ router.post("/signup", (req, res, next) => {
   })
 });
 
+//________________________________________________________LOGIN___________________________________________________________//
+//GET
+router.get("/login", (req, res, next) => {
+  res.render("auth/login", {
+    message: req.flash("error")
+  });
+});
 
+//POST
+router.post("/login", passport.authenticate("local", {
+  successRedirect: "/",
+  failureRedirect: "/login",
+  failureFlash: true,
+  passReqToCallback: true
+}));
+
+//________________________________________________________LOGIN-GOOGLE___________________________________________________________//
+
+router.get(
+  "/auth/google",
+  passport.authenticate("google", {
+    scope: [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email"
+    ]
+  })
+);
+router.get(
+  "/auth/google/callback",
+  passport.authenticate("google", {
+    successRedirect: "/",
+    failureRedirect: "/signup" 
+  })
+);
+
+//________________________________________________________LOGOUT___________________________________________________________//
+router.get("/logout", (req, res) => {
+  req.logout();
+  res.redirect("/");
+});
 module.exports = router;
