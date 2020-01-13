@@ -17,7 +17,7 @@ const placeSchema = new Schema({
       coordinates: [Number]
     },
   available: Boolean,
-  price: Number,
+  price: String,
   imgPath: String, //photo
   locatorId: {
       type: Schema.Types.ObjectId, ref: 'User' //locador
