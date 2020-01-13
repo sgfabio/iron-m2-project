@@ -85,7 +85,7 @@ router.post("/login", passport.authenticate("local", {
 }));
 
 //________________________________________________________LOGIN-GOOGLE___________________________________________________________//
-
+//GET
 router.get(
   "/auth/google",
   passport.authenticate("google", {
@@ -106,6 +106,7 @@ router.get(
 //________________________________________________________LOGOUT___________________________________________________________//
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/");
+  res.redirect("/login");
 });
+
 module.exports = router;
