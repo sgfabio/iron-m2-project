@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const { Schema, model} = mongoose;
 
 const placeSchema = new Schema({
   name: String,
@@ -31,6 +31,6 @@ const placeSchema = new Schema({
 
 placeSchema.index({ location: "2dsphere" })
 
-const Place = mongoose.model("Place", placeSchema);
+const Place = model("Place", placeSchema);
 
 module.exports = Place;
