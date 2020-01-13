@@ -8,11 +8,11 @@
 }
 
 .navbar-nav a { 
-  font-size: 1.5em;
+  font-size: 1.4em;
 }
 
 #navbarNav {
-  margin-left: 73%; /* ARRUMAR ESSA MARGIN PARA LOGIN E SINGUP NÃO FICAR DO LADO DIREITO QUANDO RESPONSIVO...flex end? */
+  margin-left: 55%; /* ARRUMAR ESSA MARGIN PARA LOGIN E SINGUP NÃO FICAR DO LADO DIREITO QUANDO RESPONSIVO...flex end? */
 }
 
 .about {
@@ -36,8 +36,8 @@
   color: white;
   line-height: 0.2em;
   text-indent: 1.1em;
-  position: fixed;
-  bottom: 0px;
+  position: relative;
+  bottom: 0;
   left: 0px;
   right: 0px;
   margin-bottom: 0px;  
@@ -105,6 +105,7 @@ a {
   font-size: 1.8em;
 }
 
+
 .error-message {
   background: #F02B63;
   box-sizing: border-box;
@@ -116,8 +117,14 @@ a {
   text-align: center;
 }
 
+#map {
+  width: 100%;
+  height: 400px;
+}
 
-
+.formOffer {
+  margin: 20px 40px;
+}
 
 
 

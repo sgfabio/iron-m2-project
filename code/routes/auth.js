@@ -21,6 +21,7 @@ router.post("/signup", (req, res, next) => {
   const {
     username,
     password,
+    email,
   } = req.body;
 
   //CHECKING CONTENT
@@ -56,7 +57,7 @@ router.post("/signup", (req, res, next) => {
 
   //CREATING USER
   User
-  .create({ username, password: hashPass })
+  .create({ username, email, password: hashPass })
   .then(() => {
     res.redirect("/");
   })
@@ -103,8 +104,26 @@ router.get(
   })
 );
 
-//________________________________________________________LOGOUT___________________________________________________________//
-router.get("/logout", (req, res) => {
+//________________________________________________________PROFILE___________________________________________________________//
+
+router.get('/profile', (req, res) => {
+  res.render('auth/profile');
+});
+
+//________________________________________________________OFFER_____________________________________________________________//
+
+router.get('/offer', (req, res) => {
+  res.render('auth/offer');
+});
+
+//________________________________________________________RENT_____________________________________________________________//
+
+router.get('/rent', (req, res) => {
+  res.render('auth/rent');
+});
+
+//________________________________________________________LOGOUT____________________________________________________________//
+router.get("/logout", (req, res) => { //ARRUMAR!!!
   req.logout();
   res.redirect("/login");
 });
