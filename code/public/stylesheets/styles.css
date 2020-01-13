@@ -1,0 +1,124 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.body {
+  font-size: 16px;
+}
+
+.navbar-nav a { 
+  font-size: 1.5em;
+}
+
+#navbarNav {
+  margin-left: 73%; /* ARRUMAR ESSA MARGIN PARA LOGIN E SINGUP NÃO FICAR DO LADO DIREITO QUANDO RESPONSIVO...flex end? */
+}
+
+.about {
+  padding-top: 3%;
+  text-align: center;
+}
+.about h1 {
+ font-size: 5.2em;
+ color: rgb(4, 37, 119);
+}
+.about h3 {
+  font-size: 2.8em;
+  color: #012FA2;
+}
+
+.footer {
+  padding-top: 1.5%;
+  height: 9%;
+  width: 100%;
+  background-color: #012FA2;
+  color: white;
+  line-height: 0.2em;
+  text-indent: 1.1em;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;  
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+
+a {
+  color: #012FA2;
+}
+
+#form {
+  margin: 6% auto;
+  width: 470px;
+  font-size: 1.6em;
+}
+
+#form label {
+  color: #012FA2;
+  display: inline-block;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+#form input,
+#form button {
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: 0;
+  padding: 8px;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 1px;
+}
+
+#form button {
+  background: #012FA2;
+  border: 1px solid #012FA2;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.7em;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: .3s ease background;
+  width: 100%;
+}
+
+#form button:hover {
+  background: #fff;
+  color: #012FA2 ;
+  transition: .3s ease background;
+}
+
+#form h1 {
+  text-align: center;
+  font-size: 1.8em;
+}
+
+.error-message {
+  background: #F02B63;
+  box-sizing: border-box;
+  color: #fff;
+  margin: 10px auto;
+  padding: 5px;
+  width: 100%;
+  font-size: 0.7em;
+  text-align: center;
+}
+
+
+
+
+
+
+/* azul logo: #012FA2 */
