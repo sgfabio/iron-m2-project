@@ -11,9 +11,6 @@
   font-size: 1.4em;
 }
 
-#navbarNav {
-  margin-left: 55%; /* ARRUMAR ESSA MARGIN PARA LOGIN E SINGUP NÃO FICAR DO LADO DIREITO QUANDO RESPONSIVO...flex end? */
-}
 
 .about {
   padding-top: 3%;
@@ -35,18 +32,18 @@
   background-color: #012FA2;
   color: white;
   line-height: 0.2em;
-  text-indent: 1.1em;
-  position: relative;
+  position: fixed;
   bottom: 0;
   left: 0px;
   right: 0px;
   margin-bottom: 0px;  
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5% 
 }
 
-.icons {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+.footer__icons img:not(:first-child) {
+  margin-left: 9px;
 }
 
 
@@ -123,9 +120,32 @@ a {
 }
 
 .formOffer {
-  margin: 20px 40px;
+  margin: 4% 9% 6% 9%;
 }
 
+.btn {
+  background-color: #012FA2;
+  margin-left: -1.6%;
+  border-color: #012FA2;
+  width: 130px;
+}
+
+.profile__content {
+  margin: 3% 10%;
+  width: 80%;
+  border: 3px solid #012FA2;
+  border-radius: 20px;
+  font-size: 3em;
+}
+
+.profile__content a {
+  text-decoration: none;
+  color: black;
+  margin-left: 2%;
+}
+.profile__content img {
+  margin-right: 20px;
+}
 
 
 /* azul logo: #012FA2 */

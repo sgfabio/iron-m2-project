@@ -9,6 +9,8 @@ const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 // adding passport for auth routes
 const passport = require("passport");
+// cloudinaary config
+const uploadCloud = require('../config/cloudinary.js');
 
 //________________________________________________________SIGN UP___________________________________________________________//
 //GET
@@ -106,19 +108,42 @@ router.get(
 
 //________________________________________________________PROFILE___________________________________________________________//
 
-router.get('/profile', (req, res) => {
+router.get('/profile', ensureAuthenticated, (req, res) => {
   res.render('auth/profile');
 });
 
-//________________________________________________________OFFER_____________________________________________________________//
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    res.redirect('/login')
+  }
+}
 
-router.get('/offer', (req, res) => {
+//________________________________________________________OFFER_____________________________________________________________//
+//GET 
+router.get('/offer', ensureAuthenticated, (req, res) => {
   res.render('auth/offer');
+});
+//POST --- TESTE!!! precisa terminar o form
+router.post('/offer', uploadCloud.single('photo'), (req, res, next) => {
+  const { name, description, neighborhood, capacity, address, available, price } = req.body;
+  const imgPath = req.file.url;
+  const newPlace = new Place({name, description, neighborhood, capacity, address, available, price, imgPath})
+  
+  newPlace
+  .save()
+  .then(place => {
+    res.redirect('/');
+  })
+  .catch(error => {
+    console.log(error);
+  })
 });
 
 //________________________________________________________RENT_____________________________________________________________//
 
-router.get('/rent', (req, res) => {
+router.get('/rent', ensureAuthenticated, (req, res) => {
   res.render('auth/rent');
 });
 
