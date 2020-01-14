@@ -2,14 +2,15 @@
   <h1> Rent or offer a space</h1>
   <h3>Fast, online and secure</h3>
 
-  <div class="cards flex-wrap d-flex justify-content-center">
+  <div class="flex-wrap d-flex justify-content-center">
     {{#each places}}
-    <div class="card col-md-4" > 
+    <div class="card col-md-3 mt-4 mx-5 mb-4"> 
       <img src="{{imgPath}}" height="170">
       <div class="card-body flex-column d-flex align-items-center">
         <h5 class="card-title">{{name}}</h5>
         <p class="card-text">{{description}}</p>
      <b><p class="card-text">{{price}}</p></b> 
+     <br>
         <a href="#" class="btn mt-auto btn-primary ">Rent</a>
       </div>
     </div>
