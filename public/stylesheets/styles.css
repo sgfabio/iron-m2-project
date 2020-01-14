@@ -5,16 +5,19 @@
 
 .body {
   font-size: 16px;
+  position: relative;
+  padding-bottom: 9%;
 }
 
 .navbar-nav a { 
-  font-size: 1.4em;
+  font-size: 1.5em;
 }
 
 
 .about {
-  padding-top: 3%;
+  padding-top: 2%;
   text-align: center;
+  margin-bottom: 5%;
 }
 .about h1 {
  font-size: 5.2em;
@@ -26,7 +29,7 @@
 }
 
 .footer {
-  height: 9%;
+  height: 7%;
   width: 100%;
   background-color: #012FA2;
   color: white;
@@ -38,7 +41,8 @@
   margin-bottom: 0px;  
   display: flex;
   justify-content: space-between;
-  padding: 1.5% 
+  padding: 1.5%;
+  padding-bottom: 0.4%;
 }
 
 .footer__icons img:not(:first-child) {
@@ -51,7 +55,7 @@ a {
 }
 
 #form {
-  margin: 6% auto;
+  margin: 6% auto 12% auto;
   width: 470px;
   font-size: 1.6em;
 }
@@ -119,9 +123,13 @@ a {
 }
 
 .formOffer {
-  margin: 4% 9% 6% 9%;
+  margin: 3% 9% 6% 9%;
 }
 
+.formOffer h1 {
+  color:#012FA2
+
+}
 .btn {
   background-color: #012FA2;
   margin-left: -1.6%;
@@ -131,6 +139,7 @@ a {
 
 .profile {
   display: flex;
+  margin: 4% auto 15% auto;
 }
 
 .h1 {
@@ -161,5 +170,16 @@ color:#012FA2;
   height: 110px;
 }
 
+.spaces {
+  margin: 3% 7% 6% 7%;
+  margin-bottom: 40%;
+}
+.spaces h1 {
+  color:#012FA2;
+  font-size: 3em;
 
-/* azul logo: #012FA2 */
+}
+
+.rentals {
+  margin-bottom: 41%;
+}

@@ -1,12 +1,20 @@
+<div class="spaces">
 <h1>My spaces</h1>
+<div class="cards flex-wrap d-flex justify-content-center" >
+    {{#each filteredPlaces}}
+    <div class="card col-md-4" > 
+      <img src="{{imgPath}}" height="170" alt="">
+      <div class="card-body flex-column d-flex align-items-center">
+        <h5 class="card-title">{{name}}</h5>
+        <p class="card-text">{{description}}</p>
+     <p class="card-text">{{price}}</p>
+     <div class="btns d-flex justify-content-between">
+        <a href="/myspaces-edit/{{_id}}" class="btn mt-auto btn-primary ">Edit</a>
+        <a href="/myspaces-edit/delete/{{_id}}" class="btn mt-auto btn-primary ">Delete</a>
+     </div>
+      </div>
+    </div>
 
-
-<ul>
-{{#each filteredPlaces}}
-<li><b>Name:</b> {{name}}</li>
-<li><b>Description:</b> {{description}}</li>
-<li><b>Price:</b> {{price}}</li>
-<a href="/myspaces-edit/{{_id}}">Edit</a>
-<a href="/myspaces-edit/delete/{{_id}}">Delete</a>
-{{/each}}
-</ul>
+    {{/each}}
+  </div>
+  </div>

@@ -160,17 +160,8 @@ router.get("/myspaces", ensureAuthenticated, (req, res, next) => {
   });
 });
 
-router.post('/myspaces-edit/:id', (req, res, next) => {
-  const { name, description, neighborhood, capacity, address, available, price } = req.body;
-  const {id} = req.params
-  console.log(req.body)
-  Place 
-    .findByIdAndUpdate( {_id:id}, {name, description, neighborhood, capacity, address, available, price})
-    .then(_ => res.redirect('/myspaces'))
-    .catch(error => console.log(error))
-});
 
-//PLACE EDIT
+// GET PLACE EDIT
 router.get('/myspaces-edit/:id', ensureAuthenticated, (req, res, next) => {
   const { id } = req.params;
   
@@ -181,6 +172,18 @@ router.get('/myspaces-edit/:id', ensureAuthenticated, (req, res, next) => {
   })
   .catch(error => console.log(error))
 });
+
+//POST PLACE EDIT
+router.post('/myspaces-edit/:id', (req, res, next) => {
+  const { name, description, neighborhood, capacity, address, available, price } = req.body;
+  const {id} = req.params
+  console.log(req.body)
+  Place 
+    .findByIdAndUpdate( {_id:id}, {name, description, neighborhood, capacity, address, available, price})
+    .then(_ => res.redirect('/myspaces'))
+    .catch(error => console.log(error))
+});
+
 
 //PLACE DELETE
 router.get('/myspaces-edit/delete/:id', ensureAuthenticated, (req, res, next) => {
@@ -196,9 +199,21 @@ router.get('/myspaces-edit/delete/:id', ensureAuthenticated, (req, res, next) =>
 
 //________________________________________________________RENT_____________________________________________________________//
 
-router.get('/rent', ensureAuthenticated, (req, res) => {
-  res.render('auth/rent', {loggedIn: req.user});
+router.get('/myrentals', ensureAuthenticated, (req, res) => {
+  res.render('auth/myrentals', {loggedIn: req.user});
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 //________________________________________________________LOGOUT____________________________________________________________//
 router.get("/logout", (req, res) => { //ARRUMAR!!!
@@ -207,5 +222,3 @@ router.get("/logout", (req, res) => { //ARRUMAR!!!
 });
 
 module.exports = router;
-
-
