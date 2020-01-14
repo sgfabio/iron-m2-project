@@ -1,14 +1,12 @@
-<b>
-<form action="/offer" method="POST" enctype="multipart/form-data" class="formOffer">
-<h1>Register a place</h1>
-<br>
+<h1>Edit a place</h1>
+<form action="/myspaces-edit/{{places._id}}" method="POST" class="formOffer">
   <div class="form-group">
     <label for="exampleFormControlInput1">Name</label>
-    <input name="name" type="name" class="form-control" id="exampleFormControlInput1" placeholder="my space">
+    <input value="{{places.name}}" name="name" type="name" class="form-control" id="exampleFormControlInput1">
   </div>
    <div class="form-group">
     <label for="exampleFormControlTextarea1">Description</label>
-    <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+    <textarea value="{{places.description}}" name="description" class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1">Capacity</label>
@@ -61,13 +59,11 @@
   </label>
 </div>
 <br>
-  <div class="form-group">
+  {{!-- <div class="form-group">
     <label for="exampleFormControlFile1">Photo</label>
     <input name="photo" type="file" class="form-control-file" id="exampleFormControlFile1">
-  </div>
-  <br>
+  </div> --}}
   <div class="col-auto my-1">
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </form>
-</b>

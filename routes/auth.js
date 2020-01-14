@@ -128,25 +128,92 @@ router.get('/offer', ensureAuthenticated, (req, res) => {
 //POST --- TESTE!!! precisa terminar o form
 router.post('/offer', uploadCloud.single('photo'), (req, res, next) => {
   const { name, description, neighborhood, capacity, address, available, price } = req.body;
-  //const imgPath = req.file.url;
-  const newPlace = new Place({name, description, neighborhood, capacity, address, available, price})
+  const imgPath = req.file.url;
+  const locatorId = req.user.id
+  const newPlace = new Place({name, description, neighborhood, capacity, address, available, price, imgPath, locatorId})
   console.log(req.body)
 
   newPlace
   .save()
   .then(place => {
-    res.redirect('/');
+    res.redirect('/myspaces');
   })
   .catch(error => {
     console.log(error);
   })
 });
 
+//________________________________________________________MYPLACES_____________________________________________________________//
+//PLACE LIST
+router.get("/myspaces", ensureAuthenticated, (req, res, next) => {
+  Place
+  .find()
+  .then(places => {
+  const filteredPlaces = places.filter(({locatorId}) => {
+    const { id } = req.user;
+    if (locatorId) return locatorId.equals(id)
+  })
+  res.render("auth/myspaces", { loggedIn: req.user, filteredPlaces })
+  })
+  .catch(error => {
+    next(error)
+  });
+});
+
+
+// GET PLACE EDIT
+router.get('/myspaces-edit/:id', ensureAuthenticated, (req, res, next) => {
+  const { id } = req.params;
+  
+  Place
+  .findById(id)
+  .then(places => {
+    res.render('auth/myspaces-edit', { loggedIn: req.user, places });
+  })
+  .catch(error => console.log(error))
+});
+
+//POST PLACE EDIT
+router.post('/myspaces-edit/:id', (req, res, next) => {
+  const { name, description, neighborhood, capacity, address, available, price } = req.body;
+  const {id} = req.params
+  console.log(req.body)
+  Place 
+    .findByIdAndUpdate( {_id:id}, {name, description, neighborhood, capacity, address, available, price})
+    .then(_ => res.redirect('/myspaces'))
+    .catch(error => console.log(error))
+});
+
+
+//PLACE DELETE
+router.get('/myspaces-edit/delete/:id', ensureAuthenticated, (req, res, next) => {
+  const {id} = req.params
+
+  Place
+  .findByIdAndDelete(id)
+  .then(() => {
+    res.redirect('/myspaces',  { loggedIn: req.user, places });
+  })
+  .catch(error => console.log(error))
+});
+
 //________________________________________________________RENT_____________________________________________________________//
 
-router.get('/rent', ensureAuthenticated, (req, res) => {
-  res.render('auth/rent', {loggedIn: req.user});
+router.get('/myrentals', ensureAuthenticated, (req, res) => {
+  res.render('auth/myrentals', {loggedIn: req.user});
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 //________________________________________________________LOGOUT____________________________________________________________//
 router.get("/logout", (req, res) => { //ARRUMAR!!!
