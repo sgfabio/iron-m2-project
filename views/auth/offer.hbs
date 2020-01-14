@@ -3,60 +3,64 @@
 <h1>Register a place</h1>
 <br>
   <div class="form-group">
-    <label for="exampleFormControlInput1">Name</label>
-    <input name="name" type="name" class="form-control" id="exampleFormControlInput1" placeholder="my space">
+    <label for="placeName">Name</label>
+    <input name="name" type="name" class="form-control" id="placeName" placeholder="my space">
   </div>
    <div class="form-group">
     <label for="exampleFormControlTextarea1">Description</label>
-    <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+    <textarea name="description" class="form-control" id="placeDescription" rows="2"></textarea>
   </div>
   <div class="form-group">
-    <label for="exampleFormControlSelect1">Capacity</label>
-    <select name="capacity" class="form-control" id="exampleFormControlSelect1">
+    <label for="placeCapacity">Capacity</label>
+    <select name="capacity" class="form-control" id="placeCapacity">
       <option value="0.5">0.5m³</option>
       <option value="1">1m³</option>
-      <option value="1.5">1.5m³</option>
+      <option selected value="1.5">1.5m³</option>
       <option value="2">2m³</option>
     </select>
   </div>
    <div class="form-group">
-    <label for="inputAddress">Address</label>
-    <input name="address" type="text" class="form-control" id="inputAddress" placeholder="Rua, Avenida, Alameda">
+     {{!-- ADDRESS >> main.js EventListener busca neste id="inputAddress" e retorna o lat/long populando respectivos campos neste formulário --}}
+    <label for="placeAddress">Address</label>
+    <input name="address" type="text" class="form-control" id="placeAddress" placeholder="Rua, Avenida, Alameda">
+    <br>
+    <input type="text" name="latitude" id="placeLatitude" placeholder="latitude">
+    <input type="text" name="longitude" id="placeLongitude" placeholder="longitude">
   </div>
   <div class="form-group">
-    <label for="inputAddress2">Neighborhood</label>
-    <input name="neighborhood" type="text" class="form-control" id="inputNeighborhood" placeholder="Jardim Paulista, Jardins">
+    <label for="placeNeighborhood">Neighborhood</label>
+    <input name="neighborhood" type="text" class="form-control" id="placeNeighborhood" placeholder="Jardim Paulista, Jardins">
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputCity">City</label>
-      <input type="text" class="form-control" id="inputCity">
+      <label for="placeCity">City</label>
+      <input type="text" class="form-control" id="placeCity">
     </div>
     <div class="form-group col-md-4">
-      <label for="inputState">State</label>
-      <select id="inputState" class="form-control">
+      <label for="placeState">State</label>
+      <select id="placeState" class="form-control">
         <option selected>Choose...</option>
         <option>SP</option>
       </select>
     </div>
     <div class="form-group col-md-2">
-      <label for="inputZip">CEP</label>
-      <input type="text" class="form-control" id="inputZip">
+      <label for="placeZIP">CEP</label>
+      <input type="text" class="form-control" id="placeZIP">
     </div>
   </div>
   <div class="form-group">
-    <label for="exampleFormControlInput1">Price</label>
-    <input name="price" type="price" class="form-control" id="exampleFormControlInput1" placeholder="50, 100, 150...">
+    <label for="placePrice">Price</label>
+    <input name="price" type="price" class="form-control" id="placePrice" placeholder="50, 100, 150...">
   </div>
   <div class="form-check">
-  <input name="available" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="true" checked>
-  <label class="form-check-label" for="exampleRadios1">
+  <input name="available" class="form-check-input" type="radio" name="exampleRadios" id="placeAvailability1" value="true" checked>
+  <label class="form-check-label" for="placeAvailability1">
     Available
   </label>
 </div>
 <div class="form-check">
-  <input name="available" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="false">
-  <label class="form-check-label" for="exampleRadios2">
+  <input name="available" class="form-check-input" type="radio" name="exampleRadios" id="placeAvailability2" value="false">
+  <label class="form-check-label" for="placeAvailability2">
    Unavailable 
   </label>
 </div>

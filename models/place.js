@@ -5,17 +5,18 @@ const placeSchema = new Schema({
   name: String,
   description: String,
   neighborhood: String,
+  address: String,
+  location: {
+    type: {
+      type: String
+    },
+    coordinates: [Number]
+  },
   capacity: {
       type: String,
       enum: ["0.5", "1", "1.5", "2"],
       default: "0.5"
     }, 
-  address: {
-      type: {
-      type: String
-      },
-      coordinates: [Number]
-    },
   available: Boolean,
   price: String,
   imgPath: String, //photo
