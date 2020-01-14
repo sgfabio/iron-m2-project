@@ -194,7 +194,7 @@ router.get('/myspaces-edit/delete/:id', ensureAuthenticated, (req, res, next) =>
   .then(() => {
     res.redirect('/myspaces',  { loggedIn: req.user, places });
   })
-  .catch(error => console.log(error))
+  .catch(error => console.log(error)) //DEPOIS QUE EU DELETO NAO RENDERIZA A PAGINA, POREM DELETA O PLACE!
 });
 
 //________________________________________________________RENT_____________________________________________________________//
