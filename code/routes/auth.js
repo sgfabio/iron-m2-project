@@ -109,7 +109,7 @@ router.get(
 //________________________________________________________PROFILE___________________________________________________________//
 
 router.get('/profile', ensureAuthenticated, (req, res) => {
-  res.render('auth/profile');
+  res.render('auth/profile', {loggedIn: req.user});
 });
 
 function ensureAuthenticated(req, res, next) {
@@ -123,14 +123,15 @@ function ensureAuthenticated(req, res, next) {
 //________________________________________________________OFFER_____________________________________________________________//
 //GET 
 router.get('/offer', ensureAuthenticated, (req, res) => {
-  res.render('auth/offer');
+  res.render('auth/offer', {loggedIn: req.user});
 });
 //POST --- TESTE!!! precisa terminar o form
 router.post('/offer', uploadCloud.single('photo'), (req, res, next) => {
   const { name, description, neighborhood, capacity, address, available, price } = req.body;
-  const imgPath = req.file.url;
-  const newPlace = new Place({name, description, neighborhood, capacity, address, available, price, imgPath})
-  
+  //const imgPath = req.file.url;
+  const newPlace = new Place({name, description, neighborhood, capacity, address, available, price})
+  console.log(req.body)
+
   newPlace
   .save()
   .then(place => {
@@ -144,7 +145,7 @@ router.post('/offer', uploadCloud.single('photo'), (req, res, next) => {
 //________________________________________________________RENT_____________________________________________________________//
 
 router.get('/rent', ensureAuthenticated, (req, res) => {
-  res.render('auth/rent');
+  res.render('auth/rent', {loggedIn: req.user});
 });
 
 //________________________________________________________LOGOUT____________________________________________________________//

@@ -26,13 +26,12 @@
 }
 
 .footer {
-  padding-top: 1.5%;
   height: 9%;
   width: 100%;
   background-color: #012FA2;
   color: white;
   line-height: 0.2em;
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0px;
   right: 0px;
@@ -130,12 +129,18 @@ a {
   width: 130px;
 }
 
+
+.profile h1 {
+text-indent: 15.8%;
+font-size: 3.4em;
+margin-top: 2%;
+color:#012FA2;
+}
+
 .profile__content {
-  margin: 3% 10%;
+  margin: 3% 6%;
   width: 80%;
-  border: 3px solid #012FA2;
-  border-radius: 20px;
-  font-size: 3em;
+  font-size: 2.8em;
 }
 
 .profile__content a {
@@ -143,8 +148,14 @@ a {
   color: black;
   margin-left: 2%;
 }
+.profile__content a:hover {
+  background: #fff;
+  color: #012FA2 ;
+  transition: .3s ease background;
+}
 .profile__content img {
   margin-right: 20px;
+  height: 110px;
 }
 
 

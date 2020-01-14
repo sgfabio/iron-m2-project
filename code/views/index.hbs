@@ -1,8 +1,23 @@
 <div class="about">
-<h1> Rent or offer a space</h1>
-<h3>Fast, online and secure</h3>
+  <h1> Rent or offer a space</h1>
+  <h3>Fast, online and secure</h3>
 
-{{!-- 
+  <div class="card-deck flex-wrap d-flex justify-content-center">
+    {{#each places}}
+    <div class="card col-sm-3 ">
+      <img src="{{imgPath}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{name}}</h5>
+        <p class="card-text">{{description}}</p>
+        <a href="#" class="btn btn-primary">Rent</a>
+      </div>
+    </div>
+
+    {{/each}}
+  </div>
+
+
+  {{!-- 
 <h1>Welcome to the Movie Project</h1>
 <div class="movies-wrapper">
   {{#each movies}}
