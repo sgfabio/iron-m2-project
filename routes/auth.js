@@ -127,11 +127,28 @@ router.get('/offer', ensureAuthenticated, (req, res) => {
 });
 //POST --- TESTE!!! precisa terminar o form
 router.post('/offer', uploadCloud.single('photo'), (req, res, next) => {
-  const { name, description, neighborhood, capacity, address, available, price } = req.body;
+  const { name, description, neighborhood, capacity, address, available, price, latitude, longitude } = req.body;
   const imgPath = req.file.url;
   const locatorId = req.user.id
-  const newPlace = new Place({name, description, neighborhood, capacity, address, available, price, imgPath, locatorId})
-  console.log(req.body)
+
+  // Construção do objeto tipo Place
+  const newPlace = new Place({
+    name,
+    description,
+    neighborhood,
+    capacity, 
+    address,
+    location: {
+        type: 'Point',
+        coordinates: [latitude, longitude]
+      },
+    available,
+    price,
+    imgPath,
+    locatorId,
+  })
+ 
+  // console.log(req.body)
 
   newPlace
   .save()
