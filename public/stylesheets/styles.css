@@ -129,16 +129,19 @@ a {
   width: 130px;
 }
 
+.profile {
+  display: flex;
+}
 
-.profile h1 {
-text-indent: 15.8%;
-font-size: 3.4em;
-margin-top: 2%;
+.h1 {
+text-indent: 14.8%;
+font-size: 60px;
+margin-top: 4%;
 color:#012FA2;
 }
 
 .profile__content {
-  margin: 3% 6%;
+  margin: 5% 14%;
   width: 80%;
   font-size: 2.8em;
 }

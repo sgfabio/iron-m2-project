@@ -4,8 +4,8 @@
 
   <div class="card-deck flex-wrap d-flex justify-content-center">
     {{#each places}}
-    <div class="card col-md-4 ">
-      <img src="{{imgPath}}" class="card-img-top" alt="...">
+    <div class="card col-md-4  ">
+      <img src="{{imgPath}}" height="170" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{name}}</h5>
         <p class="card-text">{{description}}</p>
@@ -16,22 +16,4 @@
 
     {{/each}}
   </div>
-
-
-  {{!-- 
-<h1>Welcome to the Movie Project</h1>
-<div class="movies-wrapper">
-  {{#each movies}}
-    <div class="movie-item">
-      <img src="{{this.imgPath}}" alt="">
-      <h4>{{this.title}}</h4>
-      <p>{{this.description}}</p>
-    </div>
-  {{else}}
-    <p>There are no movies yet! :(</p>
-  {{/each}}
-</div> --}}
-
-
-
 </div>

@@ -146,7 +146,6 @@ router.post('/offer', uploadCloud.single('photo'), (req, res, next) => {
 //________________________________________________________MYPLACES_____________________________________________________________//
 //PLACE LIST
 router.get("/myspaces", ensureAuthenticated, (req, res, next) => {
-
   Place
   .find()
   .then(places => {
@@ -161,6 +160,16 @@ router.get("/myspaces", ensureAuthenticated, (req, res, next) => {
   });
 });
 
+router.post('/myspaces-edit/:id', (req, res, next) => {
+  const { name, description, neighborhood, capacity, address, available, price } = req.body;
+  const {id} = req.params
+  console.log(req.body)
+  Place 
+    .findByIdAndUpdate( {_id:id}, {name, description, neighborhood, capacity, address, available, price})
+    .then(_ => res.redirect('/myspaces'))
+    .catch(error => console.log(error))
+});
+
 //PLACE EDIT
 router.get('/myspaces-edit/:id', ensureAuthenticated, (req, res, next) => {
   const { id } = req.params;
@@ -169,6 +178,18 @@ router.get('/myspaces-edit/:id', ensureAuthenticated, (req, res, next) => {
   .findById(id)
   .then(places => {
     res.render('auth/myspaces-edit', { loggedIn: req.user, places });
+  })
+  .catch(error => console.log(error))
+});
+
+//PLACE DELETE
+router.get('/myspaces-edit/delete/:id', ensureAuthenticated, (req, res, next) => {
+  const {id} = req.params
+
+  Place
+  .findByIdAndDelete(id)
+  .then(() => {
+    res.redirect('/myspaces',  { loggedIn: req.user, places });
   })
   .catch(error => console.log(error))
 });

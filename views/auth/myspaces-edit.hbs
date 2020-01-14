@@ -1,1 +1,69 @@
-<h1>teste</h1>
+<h1>Edit a place</h1>
+<form action="/myspaces-edit/{{places._id}}" method="POST" class="formOffer">
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Name</label>
+    <input value="{{places.name}}" name="name" type="name" class="form-control" id="exampleFormControlInput1">
+  </div>
+   <div class="form-group">
+    <label for="exampleFormControlTextarea1">Description</label>
+    <textarea value="{{places.description}}" name="description" class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Capacity</label>
+    <select name="capacity" class="form-control" id="exampleFormControlSelect1">
+      <option value="0.5">0.5m³</option>
+      <option value="1">1m³</option>
+      <option value="1.5">1.5m³</option>
+      <option value="2">2m³</option>
+    </select>
+  </div>
+   <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input name="address" type="text" class="form-control" id="inputAddress" placeholder="Rua, Avenida, Alameda">
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">Neighborhood</label>
+    <input name="neighborhood" type="text" class="form-control" id="inputNeighborhood" placeholder="Jardim Paulista, Jardins">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">City</label>
+      <input type="text" class="form-control" id="inputCity">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">State</label>
+      <select id="inputState" class="form-control">
+        <option selected>Choose...</option>
+        <option>SP</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">CEP</label>
+      <input type="text" class="form-control" id="inputZip">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Price</label>
+    <input name="price" type="price" class="form-control" id="exampleFormControlInput1" placeholder="50, 100, 150...">
+  </div>
+  <div class="form-check">
+  <input name="available" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="true" checked>
+  <label class="form-check-label" for="exampleRadios1">
+    Available
+  </label>
+</div>
+<div class="form-check">
+  <input name="available" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="false">
+  <label class="form-check-label" for="exampleRadios2">
+   Unavailable 
+  </label>
+</div>
+<br>
+  {{!-- <div class="form-group">
+    <label for="exampleFormControlFile1">Photo</label>
+    <input name="photo" type="file" class="form-control-file" id="exampleFormControlFile1">
+  </div> --}}
+  <div class="col-auto my-1">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>

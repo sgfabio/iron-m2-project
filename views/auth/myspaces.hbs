@@ -3,8 +3,10 @@
 
 <ul>
 {{#each filteredPlaces}}
-<li>Name: {{name}}</li>
-<li>Descriptiom: {{description}}</li>
+<li><b>Name:</b> {{name}}</li>
+<li><b>Description:</b> {{description}}</li>
+<li><b>Price:</b> {{price}}</li>
 <a href="/myspaces-edit/{{_id}}">Edit</a>
+<a href="/myspaces-edit/delete/{{_id}}">Delete</a>
 {{/each}}
 </ul>
