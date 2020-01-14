@@ -4,11 +4,12 @@
 
   <div class="card-deck flex-wrap d-flex justify-content-center">
     {{#each places}}
-    <div class="card col-sm-3 ">
+    <div class="card col-md-4 ">
       <img src="{{imgPath}}" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{name}}</h5>
         <p class="card-text">{{description}}</p>
+     <b><p class="card-text">{{price}}</p></b> 
         <a href="#" class="btn btn-primary">Rent</a>
       </div>
     </div>

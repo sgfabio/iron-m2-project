@@ -1,0 +1,10 @@
+<h1>My spaces</h1>
+
+
+<ul>
+{{#each filteredPlaces}}
+<li>Name: {{name}}</li>
+<li>Descriptiom: {{description}}</li>
+<a href="/myspaces-edit/{{_id}}">Edit</a>
+{{/each}}
+</ul>

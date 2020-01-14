@@ -128,18 +128,49 @@ router.get('/offer', ensureAuthenticated, (req, res) => {
 //POST --- TESTE!!! precisa terminar o form
 router.post('/offer', uploadCloud.single('photo'), (req, res, next) => {
   const { name, description, neighborhood, capacity, address, available, price } = req.body;
-  //const imgPath = req.file.url;
-  const newPlace = new Place({name, description, neighborhood, capacity, address, available, price})
+  const imgPath = req.file.url;
+  const locatorId = req.user.id
+  const newPlace = new Place({name, description, neighborhood, capacity, address, available, price, imgPath, locatorId})
   console.log(req.body)
 
   newPlace
   .save()
   .then(place => {
-    res.redirect('/');
+    res.redirect('/myspaces');
   })
   .catch(error => {
     console.log(error);
   })
+});
+
+//________________________________________________________MYPLACES_____________________________________________________________//
+//PLACE LIST
+router.get("/myspaces", ensureAuthenticated, (req, res, next) => {
+
+  Place
+  .find()
+  .then(places => {
+  const filteredPlaces = places.filter(({locatorId}) => {
+    const { id } = req.user;
+    if (locatorId) return locatorId.equals(id)
+  })
+  res.render("auth/myspaces", { loggedIn: req.user, filteredPlaces })
+  })
+  .catch(error => {
+    next(error)
+  });
+});
+
+//PLACE EDIT
+router.get('/myspaces-edit/:id', ensureAuthenticated, (req, res, next) => {
+  const { id } = req.params;
+  
+  Place
+  .findById(id)
+  .then(places => {
+    res.render('auth/myspaces-edit', { loggedIn: req.user, places });
+  })
+  .catch(error => console.log(error))
 });
 
 //________________________________________________________RENT_____________________________________________________________//
@@ -155,3 +186,5 @@ router.get("/logout", (req, res) => { //ARRUMAR!!!
 });
 
 module.exports = router;
+
+
