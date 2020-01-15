@@ -2,21 +2,22 @@
   <h1> Rent or offer a space</h1>
   <h3>Fast, online and secure</h3>
 
-{{!-- DIV MAP  --}}
+  {{!-- DIV MAP  --}}
 
   <div class="flex-wrap d-flex justify-content-center">
     {{#each availablePlaces}}
-    <div class="card col-md-3 mt-4 mx-5 mb-4"> 
+    <div class="card col-md-3 mt-4 mx-5 mb-4" id="available-places">
       <img src="{{imgPath}}" height="170">
       <div class="card-body flex-column d-flex align-items-center">
         <h5 class="card-title">{{name}}</h5>
         <p class="card-text">{{description}}</p>
-     <b><p class="card-text">{{price}}</p></b> 
-     <br>
+        <b>
+          <p class="card-text">{{price}}</p>
+        </b>
+        <br>
         <a href="/rent/{{_id}}" class="btn mt-auto btn-primary ">Rent</a>
       </div>
     </div>
-
     {{/each}}
   </div>
 </div>

@@ -137,7 +137,7 @@ a {
   background-color: #012FA2;
   margin-left: -1.6%;
   border-color: #012FA2;
-  width: 130px;
+  width: auto;
 }
 
 .profile {
@@ -181,4 +181,9 @@ color:#012FA2;
   color:#012FA2;
   font-size: 3em;
 
+}
+
+.rent {
+  font-size: 1.5em;
+  text-align: center;
 }
