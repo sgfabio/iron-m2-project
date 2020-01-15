@@ -1,20 +1,21 @@
 <div class="spaces">
-<h1>Rent a space</h1>
-<div class="flex-wrap d-flex justify-content-center" >
-    
-    <div class="card col-lg-3 mt-4 mx-5 mb-4" > 
-      <img src="{{places.imgPath}}" height="170" alt="">
-      <div class="card-body flex-column d-flex align-items-center">
-        <h5 class="card-title">{{places.name}}</h5>
-        <p class="card-text">{{places.description}}</p>
-     <p class="card-text">{{places.price}}</p>
-    
-     <div class="btns d-flex justify-content-between">
-        <a href="/confirm-rent/{{places._id}}" class="btn mt-auto btn-primary">CONFIRM</a>
-     </div>
+  <h1>Rent a space</h1>
+  <div class="rents d-flex justify-content-center mt-5">
+    <div class="card rent" style="width: 43rem;">
+      <img src="{{places.imgPath}}" height="380" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h2 class="card-title">{{places.name}}</h5>
+          <p class="card-text"><b>Description:</b> {{places.description}}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><b>Address:</b> {{places.address}} - {{places.neighborhood}}</li>
+        <li class="list-group-item"><b>Capacity:</b> {{places.capacity}}m³</li>
+        <li class="list-group-item"><b>Price:</b> {{places.price}}</li>
+      </ul>
+      <div class="card-body">
+        <a href="/confirm-rent/{{places._id}}" class="card-link"><b>Confirm rent</b></a>
+        <a href="/" class="card-link"><b>Back</b></a>
       </div>
     </div>
-
-    
   </div>
-  </div>
+</div>

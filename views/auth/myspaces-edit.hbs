@@ -4,9 +4,10 @@
     <label for="exampleFormControlInput1">Name</label>
     <input value="{{places.name}}" name="name" type="name" class="form-control" id="exampleFormControlInput1">
   </div>
-   <div class="form-group">
+  <div class="form-group">
     <label for="exampleFormControlTextarea1">Description</label>
-    <textarea value="{{places.description}}" name="description" class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+    <textarea value="{{places.description}}" name="description" class="form-control" id="exampleFormControlTextarea1"
+      rows="2"></textarea>
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1">Capacity</label>
@@ -17,13 +18,15 @@
       <option value="2">2m³</option>
     </select>
   </div>
-   <div class="form-group">
+  <div class="form-group">
     <label for="inputAddress">Address</label>
-    <input name="address" type="text" class="form-control" id="inputAddress" placeholder="Rua, Avenida, Alameda" value="{{place.address}}">
+    <input name="address" type="text" class="form-control" id="inputAddress" placeholder="Rua, Avenida, Alameda"
+      value="{{place.address}}">
   </div>
   <div class="form-group">
     <label for="inputAddress2">Neighborhood</label>
-    <input name="neighborhood" type="text" class="form-control" id="inputNeighborhood" placeholder="Jardim Paulista, Jardins">
+    <input name="neighborhood" type="text" class="form-control" id="inputNeighborhood"
+      placeholder="Jardim Paulista, Jardins">
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -47,23 +50,21 @@
     <input name="price" type="price" class="form-control" id="priceInput" placeholder="50, 100, 150...">
   </div>
   <div class="form-check">
-  <input name="available" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="true" checked>
-  <label class="form-check-label" for="exampleRadios1">
-    Available
-  </label>
-</div>
-<div class="form-check">
-  <input name="available" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="false">
-  <label class="form-check-label" for="exampleRadios2">
-   Unavailable 
-  </label>
-</div>
-<br>
-  {{!-- <div class="form-group">
-    <label for="exampleFormControlFile1">Photo</label>
-    <input name="photo" type="file" class="form-control-file" id="exampleFormControlFile1">
-  </div> --}}
+    <input name="available" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="true"
+      checked>
+    <label class="form-check-label" for="exampleRadios1">
+      Available
+    </label>
+  </div>
+  <div class="form-check">
+    <input name="available" class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+      value="false">
+    <label class="form-check-label" for="exampleRadios2">
+      Unavailable
+    </label>
+  </div>
+  <br>
   <div class="col-auto my-1">
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
 </form>

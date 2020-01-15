@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>IRON STORAGE</title>
-
   {{!-- Axios --}}
   <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
   {{!-- GOOGLE MAPS --}}
@@ -31,7 +30,6 @@
   {{!--  CSS --}}
   <link rel="stylesheet" href="/stylesheets/styles.css" />
 </head>
-
 <header>
   <nav class="navbar px-3 navbar-expand-lg navbar-light border-bottom">
     <a class="navbar-brand" href="/">
@@ -42,16 +40,15 @@
     </button>
     <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
-
         {{#if loggedIn}}
         <li class="nav-item active">
           <a class="nav-link" href="/offer">Offer a space<span class="sr-only">(current)</span></a>
         </li>
-        {{!-- <li class="nav-item active">
-          <a class="nav-link" href="/rent/{{id}}">Rent a space <span class="sr-only">(current)</span></a>
-        </li> --}}
+        <li class="nav-item active">
+          <a class="nav-link" href="#available-places">Rent a space <span class="sr-only">(current)</span></a>
+        </li>
         <li class="nav-item">
-          <a class="nav-link" href="/profile">Profile</a> 
+          <a class="nav-link" href="/profile">Profile</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/logout">Logout</a>
@@ -74,21 +71,18 @@
 
   {{{body}}}
 
-<footer class="footer">
-  <div class="footer__text">
-    <p>® Iron Storage Ltda.</p>
-    <p>Alameda Jaú, 1301 - São Paulo - SP</p>
-    <p>01420-001</p>
-  </div>
-
-  <div class="footer__icons">
-    <img src="/images/whats.png" alt="whatsapp icon" width="38" height="37">
-    <img src="/images/instagram.png" alt="instagram icon">
-    <img src="/images/facebook.png" alt="facebook icon">
-  </div>
-
-</footer>
+  <footer class="footer">
+    <div class="footer__text">
+      <p>® Iron Storage Ltda.</p>
+      <p>Alameda Jaú, 1301 - São Paulo - SP</p>
+      <p>01420-001</p>
+    </div>
+    <div class="footer__icons">
+      <img src="/images/whats.png" alt="whatsapp icon" width="38" height="37">
+      <img src="/images/instagram.png" alt="instagram icon">
+      <img src="/images/facebook.png" alt="facebook icon">
+    </div>
+  </footer>
 </body>
-
 
 </html>
