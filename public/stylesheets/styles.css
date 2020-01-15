@@ -36,7 +36,7 @@ body {
   width: 100%;
   background-color: #012FA2;
   color: white;
-  line-height: 0.2em;
+  line-height: 0.3em;
   position: fixed;
   bottom: 0;
   left: 0px;
@@ -49,7 +49,11 @@ body {
 }
 
 .footer__icons img:not(:first-child) {
-  margin-left: 9px;
+  margin: 2px;
+}
+
+.footer_text {
+  padding-top: 2px;
 }
 
 
@@ -127,6 +131,7 @@ a {
 
 .formOffer {
   margin: 3% 9% 6% 9%;
+  padding-bottom: 15px;
 }
 
 .formOffer h1 {
@@ -192,3 +197,9 @@ color:#012FA2;
   height: 400px;
   margin: 50px auto;
 } 
+
+.cardProfile h1 {
+  font-size: 43px;
+  text-align: center;
+ 
+}
