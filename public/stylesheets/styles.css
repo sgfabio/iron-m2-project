@@ -182,3 +182,8 @@ color:#012FA2;
   font-size: 3em;
 
 }
+
+#map {
+  width: 100%;
+  height: 300px;
+} 
