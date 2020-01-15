@@ -272,4 +272,18 @@ router.get("/logout", (req, res) => { //ARRUMAR!!!
   res.redirect("/login");
 });
 
+//________________________________________________________API_______________________________________________________________//
+
+// to see raw data (JSON) in your browser, just go on: http://localhost:3000/api
+router.get('/api', (req, res, next) => {
+	Place.find({}, (error, allPlacesFromDB) => {
+		if (error) { 
+			next(error); 
+		} else { 
+			res.status(200).json({ places: allPlacesFromDB });
+		}
+	});
+});
+
+
 module.exports = router;
