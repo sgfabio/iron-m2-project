@@ -5,7 +5,7 @@
 {{!-- DIV MAP  --}}
 
   <div class="flex-wrap d-flex justify-content-center">
-    {{#each places}}
+    {{#each availablePlaces}}
     <div class="card col-md-3 mt-4 mx-5 mb-4"> 
       <img src="{{imgPath}}" height="170">
       <div class="card-body flex-column d-flex align-items-center">
@@ -13,7 +13,7 @@
         <p class="card-text">{{description}}</p>
      <b><p class="card-text">{{price}}</p></b> 
      <br>
-        <a href="#" class="btn mt-auto btn-primary ">Rent</a>
+        <a href="/rent/{{_id}}" class="btn mt-auto btn-primary ">Rent</a>
       </div>
     </div>
 

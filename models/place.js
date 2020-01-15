@@ -6,6 +6,7 @@ const placeSchema = new Schema({
   description: String,
   neighborhood: String,
   address: String,
+  zip: String,
   location: {
     type: {
       type: String

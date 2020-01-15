@@ -213,14 +213,45 @@ router.get('/myspaces-edit/delete/:id', ensureAuthenticated, (req, res, next) =>
 });
 
 //________________________________________________________RENT_____________________________________________________________//
-
-router.get('/myrentals', ensureAuthenticated, (req, res) => {
-  res.render('auth/myrentals', {loggedIn: req.user});
+//GET
+router.get("/rent/:id", ensureAuthenticated, (req, res, next) => {
+  const { id } = req.params
+  Place
+  .findById(id)
+  .then(places => {
+  res.render("auth/rent", { loggedIn: req.user, places })
+  })
+  .catch(error => {
+    next(error)
+  });
 });
 
+//GET
+router.get("/confirm-rent/:id", ensureAuthenticated, (req, res, next) => {
+  const { id } = req.params
+  Place
+  .findByIdAndUpdate(id, {available: false, renterId: req.user.id})
+  .then(_=> {
+  res.redirect("/myrentals")
+  })
+  .catch(error => {
+    next(error)
+  });
+});
 
-
-
+//MYRENTALS
+router.get('/myrentals', ensureAuthenticated, (req, res) => {
+  Place
+  .find()
+  .then(places => {
+    const rentedPlaces = places.filter(({renterId}) => {
+    const { id } = req.user;
+      if (renterId) return renterId.equals(id)
+    })
+    res.render('auth/myrentals', {loggedIn: req.user, rentedPlaces});
+  })
+  .catch(err => console.log(err))
+});
 
 
 
