@@ -154,8 +154,8 @@ color:#012FA2;
 
 .profile__content {
   margin: 5% 14%;
-  width: 80%; /* sera que é isso que ferra apos o deploy? */
-  font-size: 2.8em; /* sera que é isso que ferra apos o deploy? */
+  width: 350px; /* sera que é isso que ferra apos o deploy? */
+  font-size: 2.6em; /* sera que é isso que ferra apos o deploy? */
 }
 
 .profile__content a {
@@ -189,5 +189,6 @@ color:#012FA2;
 }
 #map {
   width: 100%;
-  height: 300px;
+  height: 400px;
+  margin: 50px auto;
 } 
