@@ -125,7 +125,7 @@ function ensureAuthenticated(req, res, next) {
 router.get('/offer', ensureAuthenticated, (req, res) => {
   res.render('auth/offer', {loggedIn: req.user});
 });
-//POST --- TESTE!!! precisa terminar o form
+//POST 
 router.post('/offer', uploadCloud.single('photo'), (req, res, next) => {
   const { name, description, neighborhood, capacity, address, available, price, latitude, longitude } = req.body;
   const imgPath = req.file.url;
@@ -147,8 +147,6 @@ router.post('/offer', uploadCloud.single('photo'), (req, res, next) => {
     imgPath,
     locatorId,
   })
- 
-  // console.log(req.body)
 
   newPlace
   .save()
@@ -209,9 +207,9 @@ router.get('/myspaces-edit/delete/:id', ensureAuthenticated, (req, res, next) =>
   Place
   .findByIdAndDelete(id)
   .then(() => {
-    res.redirect('/myspaces',  { loggedIn: req.user, places });
+    res.redirect('/myspaces');
   })
-  .catch(error => console.log(error)) //DEPOIS QUE EU DELETO NAO RENDERIZA A PAGINA, POREM DELETA O PLACE!
+  .catch(error => console.log(error)) 
 });
 
 //________________________________________________________RENT_____________________________________________________________//
