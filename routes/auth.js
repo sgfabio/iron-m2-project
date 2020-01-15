@@ -213,7 +213,7 @@ router.get('/myspaces-edit/delete/:id', ensureAuthenticated, (req, res, next) =>
 });
 
 //________________________________________________________RENT_____________________________________________________________//
-//GET
+//SELECT A PLACE 
 router.get("/rent/:id", ensureAuthenticated, (req, res, next) => {
   const { id } = req.params
   Place
@@ -226,7 +226,7 @@ router.get("/rent/:id", ensureAuthenticated, (req, res, next) => {
   });
 });
 
-//GET
+//CONFIRM RENTAL
 router.get("/confirm-rent/:id", ensureAuthenticated, (req, res, next) => {
   const { id } = req.params
   Place
@@ -253,13 +253,18 @@ router.get('/myrentals', ensureAuthenticated, (req, res) => {
   .catch(err => console.log(err))
 });
 
-
-
-
-
-
-
-
+//DELETE RENTAL
+router.get("/delete-rental/:id", ensureAuthenticated, (req, res, next) => {
+  const { id } = req.params
+  Place
+  .findByIdAndUpdate(id, {available: true, renterId: null})
+  .then(_=> {
+  res.redirect("/myrentals")
+  })
+  .catch(error => {
+    next(error)
+  });
+});
 
 //________________________________________________________LOGOUT____________________________________________________________//
 router.get("/logout", (req, res) => { //ARRUMAR!!!
