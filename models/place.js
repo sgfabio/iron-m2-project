@@ -19,7 +19,10 @@ const placeSchema = new Schema({
     }, 
   available: Boolean,
   price: String,
-  imgPath: String, //photo
+  imgPath: {
+    type: String,
+    default: "https://res.cloudinary.com/dunep2wdb/image/upload/v1579093011/folder-name/Screen_Shot_2020-01-15_at_09.56.28_hckfcg.png"
+  },
   locatorId: {
       type: Schema.Types.ObjectId, ref: 'User' //locador
     },
