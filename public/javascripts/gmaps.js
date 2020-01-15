@@ -7,7 +7,7 @@ window.onload = () => {
 function getPlaces() {
   axios.get("/api")
   .then( response => {
-    console.log(response.data)
+    console.log('Response.data' , response.data)
     setPlaces(response.data.places);
   })
   .catch(error => {
@@ -30,7 +30,7 @@ function setPlaces(places){
   
 
   places.forEach(function(place){
-    // console.log(place.location.coordinates[1], place.location.coordinates[0])
+    console.log('Place', place)
 
     const center = {
       lng: place.location.coordinates[1],
@@ -39,7 +39,7 @@ function setPlaces(places){
       // lng: 0
     };
 
-    // console.log(center)
+    console.log("Center", center)
 
     const pin = new google.maps.Marker({
       position: center,
@@ -48,6 +48,6 @@ function setPlaces(places){
     });
 
     markers.push(pin);
-    // console.log(markers)
+    console.log("Markers", markers)
   });
 }
