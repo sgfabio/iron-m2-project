@@ -13,6 +13,10 @@ const places = [
     address: "Rua Helvetia, 980",
     available: true,
     price: "$100,00",
+    location: {
+      type: "Point",
+      coordinates: [-23.561624, -46.660138]
+    },
     imgPath: "https://img.olx.com.br/images/47/477812100834356.jpg"
   }, 
   {
@@ -23,6 +27,10 @@ const places = [
     address: "Alameda Jau, 1301",
     available: true,
     price: "$50,00",
+    location: {
+      type: "Point",
+      coordinates: [-23.566618, -46.649223]
+    },
     imgPath: "http://www.wintech.nicsmine.com/wp-content/uploads/2019/01/2-3.jpg"
   }, 
   {
@@ -33,6 +41,10 @@ const places = [
     address: "R. da Consolação, 3122 ",
     available: true,
     price: "$90,00",
+    location: {
+      type: "Point",
+      coordinates: [-23.559477, -46.667482]
+    },
     imgPath: "http://www.wintech.nicsmine.com/wp-content/uploads/2019/01/4-2.jpg"
   }, 
   {
@@ -43,6 +55,10 @@ const places = [
     address: "R. dos Pinheiros, 1037 ",
     available: true,
     price: "$180,00",
+    location: {
+      type: "Point",
+      coordinates: [-23.567567, -46.687707]
+    },
     imgPath: "https://s3.amazonaws.com/southfloridareporter/wp-content/uploads/2019/10/27183033/self-storage-640x384.jpg"
   }, 
   {
@@ -53,6 +69,10 @@ const places = [
     address: "R. Áureliano Guimarães, 201",
     available: true,
     price: "$200,00",
+    location: {
+      type: "Point",
+      coordinates: [-23.629201, -46.737068]
+    },
     imgPath: "https://uploads.website.storedge.com/a0756a77-5ab9-4c50-b715-fd5a68030d77/climate-controlled-storage-1.jpg"
   }, 
   {
@@ -63,6 +83,10 @@ const places = [
     address: " R. Dom José de Barros, 31",
     available: true,
     price: "$30,00",
+    location: {
+      type: "Point",
+      coordinates: [-23.544633, -46.641480]
+    },
     imgPath: "https://http2.mlstatic.com/guarda-roupa-modulado-casal-solteiro-closet-mdf-2-x-23-x35p-D_NQ_NP_680456-MLB27443381206_052018-O.webp"
   }, 
 ];
