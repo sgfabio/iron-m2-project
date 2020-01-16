@@ -196,7 +196,8 @@ color:#012FA2;
 #map {
   width: 100%;
   height: 400px;
-  margin: 50px auto;
+  margin-bottom: 40px;
+  margin-top: -30px;
 } 
 
 .cardProfile h1 {
@@ -206,7 +207,7 @@ color:#012FA2;
 }
 
 .search {
-  width: 650px;
-  line-height: 0.4;
-  margin-left: 28%;
+  
+  line-height: 0.2;
+ 
 }
