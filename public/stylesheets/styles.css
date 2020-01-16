@@ -1,10 +1,11 @@
+
+
 * {
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-size: 16px;
   position: relative;
   padding-bottom: 50px;
   min-height: 100vh;
@@ -23,11 +24,11 @@ body {
   margin-bottom: 5%;
 }
 .about h1 {
- font-size: 5.2em;
+  font-size: 70px;
  color: rgb(4, 37, 119);
 }
 .about h3 {
-  font-size: 2.8em;
+  font-size: 45px;
   color: #012FA2;
 }
 
@@ -63,8 +64,8 @@ a {
 
 #form {
   margin: 6% auto 12% auto;
-  width: 470px;
-  font-size: 1.6em;
+  width: 370px;
+  font-size: 1.5em;
 }
 
 #form label {

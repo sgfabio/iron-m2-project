@@ -2,7 +2,45 @@
   <h1> Rent or offer a space</h1>
   <h3>Fast, online and secure</h3>
 
-{{!-- DIV MAP  --}}
+<br>
+<br>
+
+  <form class="form-column my-2 my-lg-0" method="POST" >
+      <div class="form-group">
+      <label for="placeAddress">Address</label>
+      <input name="address" type="text" class="form-control" id="placeAddress" placeholder="Rua, Avenida, Alameda">
+      <br>
+      <input type="hidden" name="latitude" id="placeLatitude" placeholder="latitude">
+      <input type="hidden" name="longitude" id="placeLongitude" placeholder="longitude">
+    </div>
+    <div class="form-group">
+      <label for="placeNeighborhood">Neighborhood</label>
+      <input name="neighborhood" type="text" class="form-control" id="placeNeighborhood"
+        placeholder="Jardim Paulista, Jardins">
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="placeCity">City</label>
+        <input type="text" class="form-control" id="placeCity">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="placeState">State</label>
+        <select id="placeState" class="form-control">
+          <option selected>Choose...</option>
+          <option>SP</option>
+        </select>
+      </div>
+      <div class="form-group col-md-2">
+        <label for="placeZIP">ZIP</label>
+        <input name="zip" type="text" class="form-control" id="placeZIP">
+      </div>
+    </div>
+    <div class="col-auto my-1">
+      <button type="submit" class="btn btn-primary">Find your place</button>
+    </div>
+    </form>
+
+
 <div id="map"></div>
 
 <h3 id="available-places">Latest spaces added</h3>
