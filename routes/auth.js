@@ -11,6 +11,8 @@ const bcryptSalt = 10;
 const passport = require("passport");
 // cloudinaary config
 const uploadCloud = require("../config/cloudinary.js");
+//nodemailer
+const nodemailer = require("nodemailer")
 
 //________________________________________________________SIGN UP___________________________________________________________//
 //GET
@@ -55,7 +57,26 @@ router.post("/signup", (req, res, next) => {
       //CREATING USER
       User.create({ username, email, password: hashPass })
         .then(() => {
-          res.redirect("/");
+          let { email } = req.body; //NODEMAILER
+          let transporter = nodemailer.createTransport({
+            service: "Gmail",
+            auth: {
+              user: "storage.iron@gmail.com",
+              pass: "ironhack20"
+            }
+          });
+          transporter
+            .sendMail({
+              from: "My Iron Storage <storage.iron@gmail.com>",
+              to: email,
+              subject: "Iron Storage - Email Verification",
+              text:
+                "We're excited to have you get started. First, you need to confirm your account. Just press the button below.",
+              html:
+                "<b>We're excited to have you get started. First, you need to confirm your account. Just press the button below.</b>"
+            })
+            .then(_ => res.redirect("/"))
+            .catch(error => console.log(error));
         })
         .catch(error => {
           console.log(error);
@@ -64,29 +85,6 @@ router.post("/signup", (req, res, next) => {
     .catch(error => {
       next(error);
     });
-});
-
-//________________________________________________________NODEMAILER___________________________________________________________//
-
-router.post("/signup", (req, res, next) => {
-  let { email } = req.body;
-  let transporter = nodemailer.createTransport({
-    service: "Gmail",
-    auth: {
-      user: "storage.iron@gmail.com",
-      pass: "ironhack20"
-    }
-  });
-  transporter
-    .sendMail({
-      from: '"My Awesome Project " <myawesome@project.com>',
-      to: {email},
-      subject: "Iron Storage - Email Verification",
-      text: "We're excited to have you get started. First, you need to confirm your account. Just press the button below.",
-      html: "<b>We're excited to have you get started. First, you need to confirm your account. Just press the button below.</b>"
-    })
-    .then(info => console.log(info))
-    .catch(error => console.log(error));
 });
 
 //________________________________________________________LOGIN___________________________________________________________//

@@ -1,44 +1,67 @@
 <div class="about">
   <h1> Rent or offer a space</h1>
   <h3>Fast, online and secure</h3>
+
   <br>
-  <b>
     <form action="/offer" method="POST" enctype="multipart/form-data" class="formOffer search">
-      <div class="form-group d-flex">
-        <label for="placeAddress">Address</label>
-        <input name="address" type="text" class="form-control" id="placeAddress" placeholder="Rua, Avenida, Alameda">
+      <div class="form-group d-flex justify-content-center">
+        <label class="search_address mr-2"for="placeAddress">
+        <input name="address" type="text" class="form-control" id="placeAddress" placeholder="Search for an address">
+        </label>
         <br>
         <input type="hidden" name="latitude" id="placeLatitude" placeholder="latitude">
         <input type="hidden" name="longitude" id="placeLongitude" placeholder="longitude">
-        <label for="placeState">Distance</label>
-        <select id="placeState" class="form-control">
-          <option selected>Choose...</option>
-          <option>100m</option>
-          <option>400m</option>
-          <option>600m</option>
-          <option>1km</option>
-          <option>10km</option>
+        <label class="search_distance" for="placeState">
+        <select name="distance" id="placeState" class="form-control">
+          <option selected>Distance</option>
+          <option value="100">100m</option>
+          <optio value="400">400m</optio value="100">
+          <option value="600">600m</option>
+          <option value="1000">1km</option>
+          <option value="10000">10km</option>
         </select>
+        </label>
       </div>
-      <br>
+
       <div class="col-auto my-1">
-        <button type="submit" class="btn btn-primary">Find your place!</button>
+        <button type="submit" class="btn">Find your place!</button>
       </div>
     </form>
   </b>
 
   <div id="map"></div>
 
+  <div class="about_content d-flex mb-5 mt-3">
+    <div class="about_content1 w-25 ml-5 mr-3">
+    <img class="about_pic img-fluid height:auto" src="/images/pin.png" alt="">
+    <h4>Find a location</h4>
+    <p>Start by searching for storage near you. With thousands of locations nationwide, we're always just around the corner.</p>
+    </div>
+
+    <div class="about_content2 w-25 ml-5 mr-3">
+    <img class="about_pic img-fluid height:auto" src="/images/schedule.png" alt="">
+    <h4>Rent your unit</h4>
+    <p>Schedule the best day for you</p>
+    </div>
+
+    <div class="about_content3 w-25 ml-5 mr-3">
+    <img class="about_pic img-fluid height:auto" src="/images/package.png" alt="">
+    <h4>Move in</h4>
+    <p>On move-in day, our property manager will show you your unit and get you set up. If you decide you need more (or less) space, we'll be happy to help you find a different unit.</p>
+    </div>
+  </div>
+
   <h3 id="available-places">Latest spaces added</h3>
+<hr>
   <div class="flex-wrap d-flex justify-content-center">
     {{#each availablePlaces}}
     <div class="card col-md-3 mt-5 mx-5 mb-4">
       <img src="{{imgPath}}" height="170">
       <div class="card-body flex-column d-flex align-items-center">
         <h5 class="card-title">{{name}}</h5>
-        <p class="card-text">{{description}}</p>
+        <p class="card-textt">{{description}}</p>
         <b>
-          <p class="card-text">{{price}}/mo</p>
+          <p class="card-textt">{{price}}/mo</p>
         </b>
         <br>
         <a href="/rent/{{_id}}" class="btn mt-auto btn-primary ">Rent</a>

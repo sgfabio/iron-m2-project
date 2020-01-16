@@ -1,5 +1,4 @@
 
-
 * {
   margin: 0;
   padding: 0;
@@ -24,18 +23,25 @@ body {
   margin-bottom: 5%;
 }
 .about h1 {
-  font-size: 70px;
- color: rgb(4, 37, 119);
+  color: rgb(4, 37, 119);
 }
 .about h3 {
-  font-size: 45px;
+  color: #EB5F33;
+}
+
+hr {
+  width: 28%;
+  height: 2.5px;
   color: #012FA2;
+  background-color: #012FA2;
+  border: none;
+  margin-left: 36%;
 }
 
 .footer {
   height: 10%;
   width: 100%;
-  background-color: #012FA2;
+  background-color: #EB5F33;
   color: white;
   line-height: 0.3em;
   position: fixed;
@@ -59,7 +65,7 @@ body {
 
 
 a {
-  color: #012FA2;
+  color: #EB5F33;
 }
 
 #form {
@@ -69,7 +75,7 @@ a {
 }
 
 #form label {
-  color: #012FA2;
+  color: #EB5F33;
   display: inline-block;
   margin-bottom: 10px;
   text-align: center;
@@ -88,7 +94,7 @@ a {
 }
 
 #form button {
-  background: #012FA2;
+  background: rgb(4, 37, 119);;
   border: 1px solid #012FA2;
   border-radius: 10px;
   color: #fff;
@@ -136,7 +142,7 @@ a {
 }
 
 .formOffer h1 {
-  color:#012FA2
+  color:#EB5F33
 
 }
 .btn {
@@ -144,8 +150,14 @@ a {
   margin-left: -1.6%;
   border-color: #012FA2;
   width: auto;
+  color:white;
 }
 
+.btn:hover {
+  background: #fff;
+  color: #012FA2 ;
+  transition: .3s ease background;
+}
 .profile {
   display: flex;
   margin: 4% auto 15% auto;
@@ -153,40 +165,35 @@ a {
 
 .h1 {
 text-indent: 14.8%;
-font-size: 60px;
+font-size: 53px;
 margin-top: 4%;
-color:#012FA2;
+color:#EB5F33;
 }
 
-.profile__content {
-  margin: 5% 14%;
-  width: 350px; /* sera que é isso que ferra apos o deploy? */
-  font-size: 2.6em; /* sera que é isso que ferra apos o deploy? */
-}
-
-.profile__content a {
+.card-text {
+  color: #012FA2;
   text-decoration: none;
-  color: black;
-  margin-left: 2%;
 }
-.profile__content a:hover {
-  background: #fff;
-  color: #012FA2 ;
+
+.card-profile a {
+  text-decoration: none;
+}
+
+.card-text:hover {
+  color: #EB5F33 ;
   transition: .3s ease background;
 }
-.profile__content img {
-  margin-right: 20px;
-  height: 110px;
-}
 
+.card-img {
+  width: 120px;
+  height: auto;
+}
 .spaces {
   margin: 3% 7% 6% 7%;
   margin-bottom: 12%;
 }
 .spaces h1 {
-  color:#012FA2;
-  font-size: 3em;
-
+  color:#EB5F33;
 }
 
 .rent {
@@ -206,6 +213,40 @@ color:#012FA2;
  
 }
 
-.search {
-  line-height: 0.2;
+.about_pic {
+  margin-top: 20px;
+  height: auto;
 }
+
+.search_address{
+  width: 46%;
+}
+
+.search_distance {
+  width: 15%;
+}
+
+@media (min-width: 870px) {
+  .search_distance {
+    width: 15%;
+  }
+  .search_address {
+    width: 40%;
+  }
+  .about h1 {
+    font-size: 68px;
+  }
+  .about h3 {
+    font-size: 43px;
+  }
+}
+
+@media (max-width: 869px) {
+  .search_distance {
+    width: 40%;
+  }
+  .search_address {
+    width: 80%;
+  }
+}
+
