@@ -226,6 +226,8 @@ color:#EB5F33;
   width: 15%;
 }
 
+
+
 @media (min-width: 870px) {
   .search_distance {
     width: 15%;
@@ -243,7 +245,7 @@ color:#EB5F33;
 
 @media (max-width: 869px) {
   .search_distance {
-    width: 40%;
+    width: 45%;
   }
   .search_address {
     width: 80%;
