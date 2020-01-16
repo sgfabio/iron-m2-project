@@ -204,3 +204,9 @@ color:#012FA2;
   text-align: center;
  
 }
+
+.search {
+  width: 650px;
+  line-height: 0.4;
+  margin-left: 28%;
+}
