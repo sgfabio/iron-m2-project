@@ -328,7 +328,7 @@ router.get("/api", (req, res, next) => {
 //POST
 
 // Returns a JSON where the location is on a radius a number of meters distant from the search location parameter 
-//ordered by proximity
+//ordered by proximity and renders index.hbs
 
 router.post("/search", (req, res, next) => {
 console.log(req.body.placeDistanceFrom)
