@@ -26,12 +26,3 @@ function geocodeAddress(geocoder) {
 }
 
 
-const capacitySelect = document.getElementById('exampleFormControlSelect1');
-if (capacitySelect) {
-  const capacityValue = capacitySelect.data;
-  capacitySelect.querySelectorAll('option').forEach((el) => {
-    console.log('elValue', el.value)
-    console.log('capacityVlaue',  capacityValue)
-    if (el.value === capacityValue) el.selected = true;
-  })
-}

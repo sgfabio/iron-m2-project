@@ -1,14 +1,52 @@
 <div class="about">
   <h1> Rent or offer a space</h1>
   <h3>Fast, online and secure</h3>
+  <br>
+  <b>
+  <form action="/offer" method="POST" enctype="multipart/form-data" class="formOffer search">
+    <div class="form-group">
+      {{!-- ADDRESS >> main.js EventListener busca neste id="inputAddress" e retorna o lat/long populando respectivos campos neste formulário --}}
+      <label for="placeAddress">Address</label>
+      <input name="address" type="text" class="form-control" id="placeAddress" placeholder="Rua, Avenida, Alameda">
+      <br>
+      <input type="hidden" name="latitude" id="placeLatitude" placeholder="latitude">
+      <input type="hidden" name="longitude" id="placeLongitude" placeholder="longitude">
+    </div>
+    <div class="form-group">
+      <label for="placeNeighborhood">Neighborhood</label>
+      <input name="neighborhood" type="text" class="form-control" id="placeNeighborhood"
+        placeholder="Jardim Paulista, Jardins">
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="placeCity">City</label>
+        <input type="text" class="form-control" id="placeCity" placeholder="São Paulo">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="placeState">State</label>
+        <select id="placeState" class="form-control">
+          <option selected>Choose...</option>
+          <option>SP</option>
+        </select>
+      </div>
+      <div class="form-group col-md-2">
+        <label for="placeZIP">ZIP</label>
+        <input placeholder="00000-000" name="zip" type="text" class="form-control" id="placeZIP">
+      </div>
+    </div>
+    <br>
+    <div class="col-auto my-1">
+      <button type="submit" class="btn btn-primary">Find your place!</button>
+    </div>
+  </form>
+</b>
 
-{{!-- DIV MAP  --}}
-<div id="map"></div>
+  <div id="map"></div>
 
-<h3 id="available-places">Latest spaces added</h3>
+  <h3 id="available-places">Latest spaces added</h3>
   <div class="flex-wrap d-flex justify-content-center">
     {{#each availablePlaces}}
-    <div class="card col-md-3 mt-5 mx-5 mb-4" >
+    <div class="card col-md-3 mt-5 mx-5 mb-4">
       <img src="{{imgPath}}" height="170">
       <div class="card-body flex-column d-flex align-items-center">
         <h5 class="card-title">{{name}}</h5>
