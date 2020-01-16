@@ -67,6 +67,7 @@ router.post("/signup", (req, res, next) => {
 });
 
 //________________________________________________________NODEMAILER___________________________________________________________//
+
 router.post("/signup", (req, res, next) => {
   let { email } = req.body;
   let transporter = nodemailer.createTransport({
