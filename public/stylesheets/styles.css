@@ -31,9 +31,9 @@ body {
 
 hr {
   width: 28%;
-  height: 2.5px;
+  height: 4px;
   color: #012FA2;
-  background-color: #012FA2;
+  background-color: #EB5F33;
   border: none;
   margin-left: 36%;
 }
@@ -227,6 +227,14 @@ color:#EB5F33;
 }
 
 
+#available-places {
+  color: rgb(4, 37, 119);
+}
+
+.find {
+  background-color: rgb(4, 37, 119);
+  border-color: rgb(4, 37, 119);
+}
 
 @media (min-width: 870px) {
   .search_distance {
