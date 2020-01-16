@@ -10,21 +10,17 @@ const bcryptSalt = 10;
 // adding passport for auth routes
 const passport = require("passport");
 // cloudinaary config
-const uploadCloud = require('../config/cloudinary.js');
+const uploadCloud = require("../config/cloudinary.js");
 
 //________________________________________________________SIGN UP___________________________________________________________//
 //GET
-router.get("/signup", (req, res, next) => { 
+router.get("/signup", (req, res, next) => {
   res.render("auth/signup");
 });
 
 //POST
 router.post("/signup", (req, res, next) => {
-  const {
-    username,
-    password,
-    email,
-  } = req.body;
+  const { username, password, email } = req.body;
 
   //CHECKING CONTENT
   if (username === "" || password === "") {
@@ -43,32 +39,53 @@ router.post("/signup", (req, res, next) => {
   }
 
   //CHEKING USERNAME
-  User
-  .findOne({username})
-  .then(user => {
-    if (user) {
-      res.render("auth/signup", {
+  User.findOne({ username })
+    .then(user => {
+      if (user) {
+        res.render("auth/signup", {
           errorMessage: "The username already exists!"
-    });
+        });
         return;
-  }
+      }
 
-  //BCRYPTING PASSWORD
-  const salt = bcrypt.genSaltSync(bcryptSalt);
-  const hashPass = bcrypt.hashSync(password, salt);
+      //BCRYPTING PASSWORD
+      const salt = bcrypt.genSaltSync(bcryptSalt);
+      const hashPass = bcrypt.hashSync(password, salt);
 
-  //CREATING USER
-  User
-  .create({ username, email, password: hashPass })
-  .then(() => {
-    res.redirect("/");
-  })
-  .catch(error => {
-    console.log(error);
-  })
-})
-  .catch(error => {next(error);
-  })
+      //CREATING USER
+      User.create({ username, email, password: hashPass })
+        .then(() => {
+          res.redirect("/");
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    })
+    .catch(error => {
+      next(error);
+    });
+});
+
+//________________________________________________________NODEMAILER___________________________________________________________//
+router.post("/signup", (req, res, next) => {
+  let { email } = req.body;
+  let transporter = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+      user: "storage.iron@gmail.com",
+      pass: "ironhack20"
+    }
+  });
+  transporter
+    .sendMail({
+      from: '"My Awesome Project " <myawesome@project.com>',
+      to: {email},
+      subject: "Iron Storage - Email Verification",
+      text: "We're excited to have you get started. First, you need to confirm your account. Just press the button below.",
+      html: "<b>We're excited to have you get started. First, you need to confirm your account. Just press the button below.</b>"
+    })
+    .then(info => console.log(info))
+    .catch(error => console.log(error));
 });
 
 //________________________________________________________LOGIN___________________________________________________________//
@@ -80,12 +97,15 @@ router.get("/login", (req, res, next) => {
 });
 
 //POST
-router.post("/login", passport.authenticate("local", {
-  successRedirect: "/",
-  failureRedirect: "/login",
-  failureFlash: true,
-  passReqToCallback: true
-}));
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+    failureFlash: true,
+    passReqToCallback: true
+  })
+);
 
 //________________________________________________________LOGIN-GOOGLE___________________________________________________________//
 //GET
@@ -102,172 +122,188 @@ router.get(
   "/auth/google/callback",
   passport.authenticate("google", {
     successRedirect: "/",
-    failureRedirect: "/signup" 
+    failureRedirect: "/signup"
   })
 );
 
 //________________________________________________________PROFILE___________________________________________________________//
 
-router.get('/profile', ensureAuthenticated, (req, res) => {
-  res.render('auth/profile', {loggedIn: req.user});
+router.get("/profile", ensureAuthenticated, (req, res) => {
+  res.render("auth/profile", { loggedIn: req.user });
 });
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   } else {
-    res.redirect('/login')
+    res.redirect("/login");
   }
 }
 
 //________________________________________________________OFFER_____________________________________________________________//
-//GET 
-router.get('/offer', ensureAuthenticated, (req, res) => {
-  res.render('auth/offer', {loggedIn: req.user});
+//GET
+router.get("/offer", ensureAuthenticated, (req, res) => {
+  res.render("auth/offer", { loggedIn: req.user });
 });
-//POST 
-router.post('/offer', uploadCloud.single('photo'), (req, res, next) => {
-  const { name, description, neighborhood, capacity, address, available, price, latitude, longitude } = req.body;
+//POST
+router.post("/offer", uploadCloud.single("photo"), (req, res, next) => {
+  const {
+    name,
+    description,
+    neighborhood,
+    capacity,
+    address,
+    available,
+    price,
+    latitude,
+    longitude
+  } = req.body;
   const imgPath = req.file.url;
-  const locatorId = req.user.id
+  const locatorId = req.user.id;
 
   // Construção do objeto tipo Place
   const newPlace = new Place({
     name,
     description,
     neighborhood,
-    capacity, 
+    capacity,
     address,
     location: {
-        type: 'Point',
-        coordinates: [latitude, longitude]
-      },
+      type: "Point",
+      coordinates: [latitude, longitude]
+    },
     available,
     price,
     imgPath,
-    locatorId,
-  })
+    locatorId
+  });
 
   newPlace
-  .save()
-  .then(place => {
-    res.redirect('/myspaces');
-  })
-  .catch(error => {
-    console.log(error);
-  })
+    .save()
+    .then(place => {
+      res.redirect("/myspaces");
+    })
+    .catch(error => {
+      console.log(error);
+    });
 });
 
 //________________________________________________________MYPLACES_____________________________________________________________//
 //PLACE LIST
 router.get("/myspaces", ensureAuthenticated, (req, res, next) => {
-  Place
-  .find()
-  .then(places => {
-  const filteredPlaces = places.filter(({locatorId}) => {
-    const { id } = req.user;
-    if (locatorId) return locatorId.equals(id)
-  })
-  res.render("auth/myspaces", { loggedIn: req.user, filteredPlaces })
-  })
-  .catch(error => {
-    next(error)
-  });
+  Place.find()
+    .then(places => {
+      const filteredPlaces = places.filter(({ locatorId }) => {
+        const { id } = req.user;
+        if (locatorId) return locatorId.equals(id);
+      });
+      res.render("auth/myspaces", { loggedIn: req.user, filteredPlaces });
+    })
+    .catch(error => {
+      next(error);
+    });
 });
 
-
 // GET PLACE EDIT
-router.get('/myspaces-edit/:id', ensureAuthenticated, (req, res, next) => {
+router.get("/myspaces-edit/:id", ensureAuthenticated, (req, res, next) => {
   const { id } = req.params;
-  
-  Place
-  .findById(id)
-  .then(places => {
-    res.render('auth/myspaces-edit', { loggedIn: req.user, places });
-  })
-  .catch(error => console.log(error))
+
+  Place.findById(id)
+    .then(places => {
+      res.render("auth/myspaces-edit", { loggedIn: req.user, places });
+    })
+    .catch(error => console.log(error));
 });
 
 //POST PLACE EDIT
-router.post('/myspaces-edit/:id', (req, res, next) => {
-  const { name, description, neighborhood, capacity, address, available, price } = req.body;
-  const {id} = req.params
-  console.log(req.body)
-  Place 
-    .findByIdAndUpdate( {_id:id}, {name, description, neighborhood, capacity, address, available, price})
-    .then(_ => res.redirect('/myspaces'))
-    .catch(error => console.log(error))
+router.post("/myspaces-edit/:id", (req, res, next) => {
+  const {
+    name,
+    description,
+    neighborhood,
+    capacity,
+    address,
+    available,
+    price
+  } = req.body;
+  const { id } = req.params;
+  console.log(req.body);
+  Place.findByIdAndUpdate(
+    { _id: id },
+    { name, description, neighborhood, capacity, address, available, price }
+  )
+    .then(_ => res.redirect("/myspaces"))
+    .catch(error => console.log(error));
 });
-
 
 //PLACE DELETE
-router.get('/myspaces-edit/delete/:id', ensureAuthenticated, (req, res, next) => {
-  const {id} = req.params
+router.get(
+  "/myspaces-edit/delete/:id",
+  ensureAuthenticated,
+  (req, res, next) => {
+    const { id } = req.params;
 
-  Place
-  .findByIdAndDelete(id)
-  .then(() => {
-    res.redirect('/myspaces');
-  })
-  .catch(error => console.log(error)) 
-});
+    Place.findByIdAndDelete(id)
+      .then(() => {
+        res.redirect("/myspaces");
+      })
+      .catch(error => console.log(error));
+  }
+);
 
 //________________________________________________________RENT_____________________________________________________________//
-//SELECT A PLACE 
+//SELECT A PLACE
 router.get("/rent/:id", ensureAuthenticated, (req, res, next) => {
-  const { id } = req.params
-  Place
-  .findById(id)
-  .then(places => {
-  res.render("auth/rent", { loggedIn: req.user, places })
-  })
-  .catch(error => {
-    next(error)
-  });
+  const { id } = req.params;
+  Place.findById(id)
+    .then(places => {
+      res.render("auth/rent", { loggedIn: req.user, places });
+    })
+    .catch(error => {
+      next(error);
+    });
 });
 
 //CONFIRM RENTAL
 router.get("/confirm-rent/:id", ensureAuthenticated, (req, res, next) => {
-  const { id } = req.params
-  Place
-  .findByIdAndUpdate(id, {available: false, renterId: req.user.id})
-  .then(_=> {
-  res.redirect("/myrentals")
-  })
-  .catch(error => {
-    next(error)
-  });
+  const { id } = req.params;
+  Place.findByIdAndUpdate(id, { available: false, renterId: req.user.id })
+    .then(_ => {
+      res.redirect("/myrentals");
+    })
+    .catch(error => {
+      next(error);
+    });
 });
 
 //MYRENTALS
-router.get('/myrentals', ensureAuthenticated, (req, res) => {
-  Place
-  .find()
-  .then(places => {
-    const rentedPlaces = places.filter(({renterId}) => {
-    const { id } = req.user;
-      if (renterId) return renterId.equals(id)
+router.get("/myrentals", ensureAuthenticated, (req, res) => {
+  Place.find()
+    .then(places => {
+      const rentedPlaces = places.filter(({ renterId }) => {
+        const { id } = req.user;
+        if (renterId) return renterId.equals(id);
+      });
+      res.render("auth/myrentals", { loggedIn: req.user, rentedPlaces });
     })
-    res.render('auth/myrentals', {loggedIn: req.user, rentedPlaces});
-  })
-  .catch(err => console.log(err))
+    .catch(err => console.log(err));
 });
 
 //DELETE RENTAL
 router.get("/delete-rental/:id", ensureAuthenticated, (req, res, next) => {
-  const { id } = req.params
-  Place
-  .findByIdAndUpdate(id, {available: true, renterId: null})
-  .then(_=> {
-  res.redirect("/myrentals")
-  })
-  .catch(error => {
-    next(error)
-  });
+  const { id } = req.params;
+  Place.findByIdAndUpdate(id, { available: true, renterId: null })
+    .then(_ => {
+      res.redirect("/myrentals");
+    })
+    .catch(error => {
+      next(error);
+    });
 });
 
 //________________________________________________________LOGOUT____________________________________________________________//
-router.get("/logout", (req, res) => { //ARRUMAR!!!
+router.get("/logout", (req, res) => {
+  //ARRUMAR!!!
   req.logout();
   res.redirect("/login");
 });
@@ -275,15 +311,14 @@ router.get("/logout", (req, res) => { //ARRUMAR!!!
 //________________________________________________________API_______________________________________________________________//
 
 // to see raw data (JSON) in your browser, just go on: http://localhost:3000/api
-router.get('/api', (req, res, next) => {
-	Place.find({}, (error, allPlacesFromDB) => {
-		if (error) { 
-			next(error); 
-		} else { 
-			res.status(200).json({ places: allPlacesFromDB });
-		}
-	});
+router.get("/api", (req, res, next) => {
+  Place.find({}, (error, allPlacesFromDB) => {
+    if (error) {
+      next(error);
+    } else {
+      res.status(200).json({ places: allPlacesFromDB });
+    }
+  });
 });
-
 
 module.exports = router;
