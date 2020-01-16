@@ -309,7 +309,7 @@ router.get("/logout", (req, res) => {
   res.redirect("/login");
 });
 
-//________________________________________________________API_______________________________________________________________//
+//________________________________________________________API ALL___________________________________________________________//
 
 // to see raw data (JSON) in your browser, just go on: http://localhost:3000/api
 router.get("/api", (req, res, next) => {
@@ -321,5 +321,36 @@ router.get("/api", (req, res, next) => {
     }
   });
 });
+
+
+
+//________________________________________________________ Search_______________________________________________________//
+//POST
+
+// Returns a JSON where the location is on a radius a number of meters distant from the search location parameter 
+//ordered by proximity
+
+router.post("/search", (req, res, next) => {
+console.log(req.body.placeDistanceFrom)
+  
+  Place.find().where('location').near({
+    center: {
+      type: "Point",
+      coordinates: [req.body.latitude,req.body.longitude]
+    },
+    maxDistance: req.body.placeDistanceFrom
+  })
+  .then(places => {
+    // res.render('/', {availablePlaces} )
+    const availablePlaces = places.filter(({available}) => available === true)
+    res.render('index', {loggedIn: req.user, availablePlaces}) 
+
+  })
+  .catch(error => {
+    next(error);
+  });
+  
+});
+
 
 module.exports = router;

@@ -3,21 +3,21 @@
   <h3>Fast, online and secure</h3>
   <br>
   <b>
-    <form action="/offer" method="POST" enctype="multipart/form-data" class="formOffer search">
+    <form action="/search" method="POST" class="formOffer search">
       <div class="form-group d-flex">
         <label for="placeAddress">Address</label>
         <input name="address" type="text" class="form-control" id="placeAddress" placeholder="Rua, Avenida, Alameda">
         <br>
         <input type="hidden" name="latitude" id="placeLatitude" placeholder="latitude">
         <input type="hidden" name="longitude" id="placeLongitude" placeholder="longitude">
-        <label for="placeState">Distance</label>
-        <select id="placeState" class="form-control">
-          <option selected>Choose...</option>
-          <option>100m</option>
-          <option>400m</option>
-          <option>600m</option>
-          <option>1km</option>
-          <option>10km</option>
+        <label for="placeDistanceFrom">Distance</label>
+        <select name="placeDistanceFrom" id="placeDistanceFrom" class="form-control">
+          <option value = "100" selected>100m</option>
+          <option value = "400"> 400 m</option>
+          <option value = "600"> 600 m</option>
+          <option value = "1000">  1 km</option>
+          <option value = "5000">  5 km</option>
+          <option value = "10000">10 km</option>
         </select>
       </div>
       <br>
