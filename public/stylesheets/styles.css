@@ -269,7 +269,7 @@ color:#EB5F33;
     font-size: 38px;
     text-align: center;
   }
-  .formLogin {
+  .formLogin, .formSignup {
     width: auto!important;
   }
   .account-message {
