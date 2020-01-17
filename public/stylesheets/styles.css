@@ -235,7 +235,9 @@ color:#EB5F33;
   border-color: rgb(4, 37, 119);
 }
 
-
+.google {
+  background-color: #fff!important;
+}
 
 @media (min-width: 870px) {
   .search_distance {
@@ -248,7 +250,7 @@ color:#EB5F33;
     font-size: 68px;
   }
   .about h3 {
-    font-size: 43px;
+    font-size: 42px;
   }
   .footer {
     padding-bottom: 4%;

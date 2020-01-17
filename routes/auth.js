@@ -69,11 +69,11 @@ router.post("/signup", (req, res, next) => {
             .sendMail({
               from: "My Iron Storage <storage.iron@gmail.com>",
               to: email,
-              subject: "Iron Storage - Email Verification",
+              subject: "Iron Storage",
               text:
-                "We're excited to have you get started. First, you need to confirm your account. Just press the button below.",
+                "Welcome! We're excited to have you get started. Go to Iron Storage website and enjoy! https://iron-storage.herokuapp.com",
               html:
-                "<b>We're excited to have you get started. First, you need to confirm your account. Just press the button below.</b>"
+                "<h3>Welcome! We're excited to have you get started. Go to Iron Storage website and enjoy! https://iron-storage.herokuapp.com </h3>"
             })
             .then(_ => res.redirect("/"))
             .catch(error => console.log(error));
