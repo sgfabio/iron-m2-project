@@ -11,7 +11,6 @@ body {
   height: 100%;
 }
 
-
 .navbar-nav a { 
   font-size: 1.5em;
 }
@@ -236,6 +235,8 @@ color:#EB5F33;
   border-color: rgb(4, 37, 119);
 }
 
+
+
 @media (min-width: 870px) {
   .search_distance {
     width: 15%;
@@ -249,6 +250,9 @@ color:#EB5F33;
   .about h3 {
     font-size: 43px;
   }
+  .footer {
+    padding-bottom: 4%;
+    }
 }
 
 @media (max-width: 869px) {
@@ -257,6 +261,19 @@ color:#EB5F33;
   }
   .search_address {
     width: 80%;
+  }
+  .footer {
+  padding-top: 5%;
+  }
+  .h1-offer {
+    font-size: 38px;
+    text-align: center;
+  }
+  .formLogin {
+    width: auto!important;
+  }
+  .account-message {
+    font-size: 22px;
   }
 }
 
