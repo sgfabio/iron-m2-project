@@ -3,7 +3,7 @@
   <h3>Fast, online and secure</h3>
 
   <br>
-    <form action="/offer" method="POST" enctype="multipart/form-data" class="formOffer search">
+    <form action="/search" method="POST" class="formOffer search">
       <div class="form-group d-flex justify-content-center">
         <label class="search_address mr-2"for="placeAddress">
         <input name="address" type="text" class="form-control" id="placeAddress" placeholder="Search for an address">
@@ -12,7 +12,7 @@
         <input type="hidden" name="latitude" id="placeLatitude" placeholder="latitude">
         <input type="hidden" name="longitude" id="placeLongitude" placeholder="longitude">
         <label class="search_distance" for="placeState">
-        <select name="distance" id="placeState" class="form-control">
+        <select name="placeDistanceFrom" id="placeState" class="form-control">
           <option selected>Distance</option>
           <option value="100">100m</option>
           <option value="400">400m</option>
